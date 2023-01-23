@@ -6,7 +6,6 @@ import java.util.List;
 
 public class TaxService {
 
-    private static final String DELIMITER = "\n";
     private final List<Site> sites;
 
     public TaxService(List<Site> sites) {
