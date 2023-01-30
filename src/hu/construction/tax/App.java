@@ -23,6 +23,14 @@ public class App {
     }
 
     private void run() {
-
+        System.out.println("2. feladat. A mintában " +
+                service.getSiteCount() +
+                " telek szerepel.");
+        System.out.print("3.feadat. Egy tulajdonos adószáma: ");
+        String taxId = console.read();
+        System.out.println(service.printSiteAddressesByTaxId(taxId));
+        System.out.println("5. feladat");
+        System.out.println(service.getCategoryStatistic());
+        writer.writeAll(service.calculateTaxAmountByTaxId());
     }
 }

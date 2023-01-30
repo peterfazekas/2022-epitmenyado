@@ -32,7 +32,7 @@ public class DataParser {
         String houseNumber = items[2];
         Category category = Category.valueOf(items[3]);
         int area = Integer.parseInt(items[4]);
-        int tax = 0;
+        int tax = TaxHelper.taxValue(category, area);
         return new Site(taxId, street, houseNumber, category, area, tax);
     }
 

@@ -18,6 +18,10 @@ public class Site {
         this.tax = tax;
     }
 
+    public boolean isTaxId(String taxId) {
+        return this.taxId.equals(taxId);
+    }
+
     public String getTaxId() {
         return taxId;
     }
@@ -30,7 +34,15 @@ public class Site {
         return street + " utca " + houseNumber;
     }
 
+    public boolean isCategory(Category category) {
+        return this.category == category;
+    }
+
     public String printCategory() {
         return category.name();
+    }
+
+    public int getTax() {
+        return tax;
     }
 }
