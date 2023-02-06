@@ -6,7 +6,6 @@ import hu.construction.tax.model.domain.Site;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TaxService {
 
@@ -76,12 +75,36 @@ public class TaxService {
     }
 
     /**
+     * 6. feladat
+     */
+    public String getStreetsWithMultipleCategory() {
+        return getStreets().stream()
+                .filter(i -> countCategoriesByStreet(i) > 1)
+                .collect(Collectors.joining("\r\n"));
+    }
+
+    private List<String> getStreets() {
+        return sites.stream()
+                .map(Site::getStreet)
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    private long countCategoriesByStreet(String street) {
+        return sites.stream()
+                .filter(i -> i.isStreet(street))
+                .map(Site::printCategory)
+                .distinct()
+                .count();
+    }
+
+    /**
      * 7. feladat
      */
     public List<String> calculateTaxAmountByTaxId() {
         return  getTaxIds().stream()
-                .map(i -> getSitesByTaxId(i))
-                .map(i -> printDetails(i))
+                .map(this::getSitesByTaxId)
+                .map(this::printDetails)
                 .collect(Collectors.toList());
     }
 

@@ -31,6 +31,8 @@ public class App {
         System.out.println(service.printSiteAddressesByTaxId(taxId));
         System.out.println("5. feladat");
         System.out.println(service.getCategoryStatistic());
+        System.out.println("6. feladat. A több sávba sorolt utcák:");
+        System.out.println(service.getStreetsWithMultipleCategory());
         writer.writeAll(service.calculateTaxAmountByTaxId());
     }
 }

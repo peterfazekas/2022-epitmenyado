@@ -26,6 +26,10 @@ public class Site {
         return taxId;
     }
 
+    public boolean isStreet(String street) {
+        return this.street.equals(street);
+    }
+
     public String getStreet() {
         return street;
     }
